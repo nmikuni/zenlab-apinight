@@ -1,3 +1,3 @@
 # zenlab-apinight
-# zenlab-apinight
-# zenlab-apinight
+
+このコンテンツは CLaaT を使用して作成しています。

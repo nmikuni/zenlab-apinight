@@ -1,0 +1,278 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id=""
+                  title=""
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="Zendesk API Night ハンズオン - API 呼び出しの実践" duration="0">
+        <p>当ハンズオンでは、Zendesk の API を &#34;Postman&#34; というツールを使って実際に呼び出します。どのように API を呼び出せるのか体験することで、今後、ご自身のプログラムやサービスからも API を呼び出すことが容易になります。</p>
+<h2 is-upgraded>ハンズオンの流れ</h2>
+<p>大きく以下のような流れになっています。</p>
+<ol type="1" start="1">
+<li>Postman をセットアップ</li>
+</ol>
+<ol type="1" start="1">
+<li>Postman にサインアップ</li>
+<li>ハンズオン用に Postman を設定</li>
+</ol>
+<ol type="1" start="2">
+<li>Zendesk API の呼び出しを実践</li>
+</ol>
+<ol type="1" start="1">
+<li>チケットの情報を取り出す</li>
+<li>チケットを検索する</li>
+<li>チケットに社内メモを付ける</li>
+</ol>
+<ol type="1" start="3">
+<li>後片付け</li>
+</ol>
+<h2 is-upgraded>注意点</h2>
+<p>ハンズオンの参加にあたって、以下に注意してください。</p>
+<ol type="1" start="1">
+<li>インターネットへ接続できる PC が必要です</li>
+<li>テキストは Google Docs および Google Spreadsheet で共有します。そのため PC は Google Workspaces のサービスへアクセスできる必要があります</li>
+<li>ブラウザのアドオンや PC のセキュリティ設定によっては Postman へのアクセスや Postman からの API の実行をブロックされる場合があります</li>
+<li>当ハンズオンでは Zenlab 用に作成した <a href="https://developer.zendesk.com/documentation/api-basics/getting-started/getting-a-trial-or-sponsored-account-for-development/" target="_blank">Zendesk の Sponsored account</a> (Zendesk から無償で使わせていただいている開発用のテストアカウント) を参加者に利用していただく想定です。自身、または自社の Zendesk アカウントを使用する場合は Postman の設定が少し異なりますので、適宜読み替えてください。</li>
+</ol>
+<h2 is-upgraded>(参考) Postman とは</h2>
+<p>Postmanは、主にウェブサービスを開発するときに役立つツールです。ウェブサービスが正しく動作しているかをテストするために、特定の API リクエストを送信し、その結果を見ることができます。今回は Zendesk の API を体験するために用いますが、ウェブサイトからデータを取得するリクエストを送信し、データが期待通りに返ってきているかを確認するような使い方もできます。</p>
+<h2 is-upgraded>(参考) API とは</h2>
+<p>このハンズオンテキストでは、API についての説明は割愛します。Zendesk API Night のイベントでは、API 概要についての説明を別途した後にハンズオンをする予定です。</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Postman をセットアップ" duration="0">
+        <h3 is-upgraded>Postman へサインアップ</h3>
+<p>以下のページへアクセスして、Postman へサインアップしてください。メールアドレス・ユーザー名・パスワードでアカウントを作るか、Google アカウントでサインアップします。</p>
+<ul>
+<li><a href="https://identity.getpostman.com/signup" target="_blank">https://identity.getpostman.com/signup</a></li>
+</ul>
+<p class="image-container"><img style="width: 601.70px" src="img/a320d8af57be191b.png"></p>
+<p>サインアップが完了すると以下のような Welcome メッセージが表示されます。ポップアップは閉じて次のステップへ進みます。</p>
+<p class="image-container"><img style="width: 601.70px" src="img/1397555275b6fcec.png"></p>
+<h3 is-upgraded>Zendesk API のリストを自分の環境へコピーする</h3>
+<h4 is-upgraded>(参考) やっていることの説明</h4>
+<p>API を呼び出すには URL のパスやメソッド、認証情報といった設定が必要です。Zendesk は、Zendesk の API を Postman で簡単に呼び出せるよう Zendesk の各種 API のリストを Postman の Collection として公開しています。</p>
+<p>公開されている中の「Zendesk Support」の Collection を fork する (API のリストを自分の環境へコピーする) ことで、準備の大部分を省略します。なお、Collection は Postman の用語ですが、fork は GitHub などでも用いる用語です。</p>
+<h4 is-upgraded>手順</h4>
+<p>以下の URL へアクセスします。</p>
+<ul>
+<li><a href="https://www.postman.com/zendesk-redback/workspace/cfe0e8e6-42d1-4f46-a048-90e2caae5a05/collection/19931619-491840ed-8cea-4d36-9e4e-3cc4fc97be68" target="_blank">https://www.postman.com/zendesk-redback/workspace/cfe0e8e6-42d1-4f46-a048-90e2caae5a05/collection/19931619-491840ed-8cea-4d36-9e4e-3cc4fc97be68</a></li>
+</ul>
+<p>Zendesk Public API の Support API のページを開いていることを確認します。</p>
+<p class="image-container"><img style="width: 601.70px" src="img/6a6bcd49aa6754b2.png"></p>
+<p>&#34;Fork&#34; をクリックします。</p>
+<p class="image-container"><img style="width: 601.70px" src="img/30902d01141bd1e8.png"></p>
+<p>&#34;Fork Collection&#34; をクリックします。</p>
+<p class="image-container"><img style="width: 601.70px" src="img/4c399b4308ddeac8.png"></p>
+<p>My Workspace (自分の環境) に &#34;Support API&#34; が fork できたことを確認します。<img style="width: 28.00px" src="img/2a253f373db4a0c3.png">のマークがあれば OK です。</p>
+<p class="image-container"><img style="width: 601.70px" src="img/787f3043a7e62420.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Postman のエンドポイントをセットアップ" duration="0">
+        <h4 is-upgraded>(参考) やっていることの説明</h4>
+<p>API を呼び出す URL を指定します。Zendesk の URL は xxxx.zendesk.com (xxxx は会社毎に異なる) という形式です。この xxxx をサブドメインとも呼びます。</p>
+<h4 is-upgraded>手順</h4>
+<p>Variables (変数) タブを開きます。</p>
+<p class="image-container"><img style="width: 601.70px" src="img/a35819e0267d2cfc.png"></p>
+<p>subdomain の Current value を書き換えます。ハンズオン用のアカウントを使う人は、運営から連携されたスプレッドシートに書いてある内容を入れてください。<img style="width: 601.70px" src="img/5a4b2ec03cfc5a7d.png"></p>
+<p>Save をクリックして保存します。</p>
+<p class="image-container"><img style="width: 601.70px" src="img/e1c7a1fe4e9ccae3.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Postman の認証情報をセットアップ" duration="0">
+        <h4 is-upgraded>(参考) やっていることの説明</h4>
+<p>API を呼び出すときの認証情報を設定します。Zendesk API の認証方法はいろいろあるのですが、今回のハンズオンでは「E メールアドレス」と「API トークン」を利用した Basic 認証を利用します。今回は解説しませんが、他の認証方式も合わせて学びたい場合は、以下のドキュメントを参照してください。</p>
+<ul>
+<li><a href="https://support.zendesk.com/hc/ja/articles/4408831452954" target="_blank">https://support.zendesk.com/hc/ja/articles/4408831452954</a></li>
+<li><a href="https://developer.zendesk.com/api-reference/introduction/security-and-auth/" target="_blank">https://developer.zendesk.com/api-reference/introduction/security-and-auth/</a></li>
+</ul>
+<h4 is-upgraded>手順</h4>
+<p>Variables (変数) タブの Add new variable のテキストボックスに apiToken と入力します。</p>
+<p class="image-container"><img style="width: 601.70px" src="img/dfd4c753194311a8.png"></p>
+<p>Initial value に example、Current Value に API トークンを入力します。ハンズオン用のアカウントを使う人は、運営から連携されたスプレッドシートに書いてある内容を入れてください。</p>
+<p class="image-container"><img style="width: 601.70px" src="img/10b7b3751f9a28ff.png"></p>
+<p>Save をクリックして保存します。</p>
+<p class="image-container"><img style="width: 601.70px" src="img/5d510fe4f9a8ecb6.png"></p>
+<p>次に、Authorization (認証) タブを開きます。</p>
+<p class="image-container"><img style="width: 601.70px" src="img/b237532a0c68cd5.png"></p>
+<p>Type を Basic Auth に設定します。</p>
+<p class="image-container"><img style="width: 601.70px" src="img/405b2f041c6ecd69.png"></p>
+<p>Username を設定します。ハンズオン用のアカウントを使う人は、運営から連携されたスプレッドシートに書いてある内容を入れてください。</p>
+<p class="image-container"><img style="width: 601.70px" src="img/5ef78c35396b81c8.png"></p>
+<p>Password には &#123;&#123;apiToken}} と入力します。</p>
+<p class="image-container"><img style="width: 601.70px" src="img/ac6bb4c38e5157fe.png"></p>
+<p>Save をクリックして保存します。</p>
+<p class="image-container"><img style="width: 601.70px" src="img/cb199f27d59ef737.png"></p>
+<h4 is-upgraded>注意点</h4>
+<ul>
+<li>Username の形式は example@example.com/token と、後ろに /token が付いています。これは Zendesk の API 認証でトークンを用いたい場合のお作法です。</li>
+<li>Authorization の Password に直接 API トークンを入力しても良いのですが、Postman の推奨に従って Variabiles を設定しています。</li>
+<li>今回はハンズオンのため複数人で同じ API トークンを使っていますが、実際の運用においてはアプリケーション毎にトークンを分けることを推奨します。</li>
+</ul>
+<h4 is-upgraded>(参考) 自社の Zendesk で API トークンを発行したい場合</h4>
+<p>今回はハンズオン用に E メールアドレスと API トークンを払い出しますが、今後自社で API トークンを用いた認証をしたい場合は、以下のドキュメントを参照してください。</p>
+<ul>
+<li><a href="https://support.zendesk.com/hc/ja/articles/4408889192858" target="_blank">https://support.zendesk.com/hc/ja/articles/4408889192858</a></li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Zendesk API の呼び出しを実践" duration="0">
+        <p>エンドポイントと認証情報を設定したので、Zendesk Support の API を実行できます。ハンズオン用のアカウントを使う人へは、今回はライトエージェント権限を持った認証情報をいますので以下のドキュメントに書かれた操作ができます。</p>
+<ul>
+<li><a href="https://support.zendesk.com/hc/ja/articles/4408846501402" target="_blank">https://support.zendesk.com/hc/ja/articles/4408846501402</a></li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="チケットの情報を取り出す" duration="0">
+        <p>まずはチケットの一覧を取得してみましょう。</p>
+<h4 is-upgraded>手順</h4>
+<p>左側のフォルダ階層から、Support API &gt; api &gt; v2 &gt; tickets &gt; GET List Tickets を探してクリックします。</p>
+<p class="image-container"><img style="width: 601.70px" src="img/e19f79f45ca5a21e.png"></p>
+<p>external_id のチェックボックスを外して Send をクリックします。<img style="width: 601.70px" src="img/374d07a226d2e799.png"></p>
+<p>画面の下側に結果が返ってくるのが分かります。</p>
+<p class="image-container"><img style="width: 601.70px" src="img/95ef14187c379c6a.png"></p>
+<p>API の実行結果は JSON という形式で返却されます。</p>
+<h4 is-upgraded>(応用) 返却された JSON を読み解く</h4>
+<p>JSON はアプリケーションにとっては読みやすい形式ですが、人間にとっては読みにくい場合もあります。実際の運用にあたってはアプリケーションから API を呼び出し、アプリケーションのなかで JSON から必要な情報を読み取ればと思いますが、ここではオンラインのツールの「JSON Editor Online」を使って JSON を読んでみます。なお、オンラインの JSON 読み込みツールを使うときは、セキュリティポリシーを十分に確認してください。今回は、入力したデータが運営元や第三者が見られないツールを選定しました。</p>
+<p>以下の URL を開きます。</p>
+<ul>
+<li><a href="https://jsoneditoronline.org/#" target="_blank">https://jsoneditoronline.org/#</a></li>
+</ul>
+<p>全画面モードにしておくと見やすいです。</p>
+<p class="image-container"><img style="width: 601.70px" src="img/a4980c5639e5dce1.png"></p>
+<p>先ほどの API 呼び出しで返却された Body のコピーボタンを押してください。</p>
+<p class="image-container"><img style="width: 601.70px" src="img/b52571b35fec097d.png"></p>
+<p>JSON Editor Online へ貼り付けます。</p>
+<p class="image-container"><img style="width: 601.70px" src="img/61228f43c32830ad.png"></p>
+<p>tree を選択することで見やすくなります。</p>
+<p class="image-container"><img style="width: 601.70px" src="img/f65c048d4766003.png"></p>
+<p>たとえば上の例では tickets : [ 2 items という表示から、2件のチケットがあることが分かります。その下の 0 や 1 はリストの要素の番号です (プログラミングの世界では 0 から数え始めることが多いです)。</p>
+<p>1 の要素の中を見ていきます。よく使う項目としては、以下のようなものがあります。</p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>項目</p>
+</td><td colspan="1" rowspan="1"><p>説明</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>id</p>
+</td><td colspan="1" rowspan="1"><p>チケットの ID </p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>created_at</p>
+</td><td colspan="1" rowspan="1"><p>チケットの作成日時</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>subject</p>
+</td><td colspan="1" rowspan="1"><p>件名</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>description</p>
+</td><td colspan="1" rowspan="1"><p>チケット中の最初のコメント</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>status</p>
+</td><td colspan="1" rowspan="1"><p>チケットの状態</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>requester_id</p>
+</td><td colspan="1" rowspan="1"><p>チケットを作成したユーザーの ID</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>assignee_id</p>
+</td><td colspan="1" rowspan="1"><p>チケットを割り当てられたエージェントの ID</p>
+</td></tr>
+</table>
+<p>実際の運用では、API 呼び出しで返却された JSON から必要な情報をアプリケーションで取り出して活用します。</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="チケットを検索する" duration="0">
+        <p>前回はチケットの一覧を表示しましたが、次はチケットを検索してみます。たとえば現在「オープン」状態のチケット一覧を取得して、必要な情報を整形して Slack 等へ通知する、などは良く作成するアプリケーションの例です。</p>
+<p>Zendesk Support のコンソール画面で言うと、赤枠で囲った検索窓を使っているようなイメージです。</p>
+<p class="image-container"><img style="width: 601.70px" src="img/e0b3080a27711316.png"></p>
+<h4 is-upgraded>手順</h4>
+<p>左側のフォルダ階層から、Support API &gt; api &gt; v2 &gt; search &gt; GET List Search Results を探してクリックします。</p>
+<p class="image-container"><img style="width: 601.70px" src="img/83669d937e5934d8.png"></p>
+<p>sort_by と sort_order のチェックボックスを外します。<img style="width: 601.70px" src="img/491f72130ec8757a.png"></p>
+<p>query の Value を以下のように入力し、Send をクリックします。これは、「解決済み」チケットを検索しています。</p>
+<ul>
+<li>type:ticket status:solved</li>
+</ul>
+<p class="image-container"><img style="width: 601.70px" src="img/34e3be9cd1edc6f.png"></p>
+<p>なお、Zendesk の query の記法はやや複雑ですが、以下のドキュメントに解説があります。</p>
+<ul>
+<li><a href="https://support.zendesk.com/hc/ja/articles/4408886879258" target="_blank">https://support.zendesk.com/hc/ja/articles/4408886879258</a></li>
+</ul>
+<p>画面の下側に結果が返ってくるのが分かります。</p>
+<p class="image-container"><img style="width: 601.70px" src="img/6b6155f95182725b.png"></p>
+<h4 is-upgraded>(参考) クエリストリングについて</h4>
+<p>API ではこのように、エンドポイントの末尾に ?xxx=yyy のような文字列が付くことがよくあります。これをクエリストリング (query string) と呼びます。REST API の</p>
+<p> GET メソッドではクエリストリングで GET するときの条件を設定します。複数のクエリストリングもつけられます。たとえば今回はチェックボックスを外しましたが sort_by ではソート条件を設定できます。</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="チケットに社内メモを付ける" duration="0">
+        <p>Zendesk Support のコンソール画面で言うと、赤枠で囲ったように社内メモを保存しているようなイメージです。</p>
+<p class="image-container"><img style="width: 601.70px" src="img/110e71046c077b6a.png"></p>
+<h4 is-upgraded>手順</h4>
+<p>左側のフォルダ階層から、Support API &gt; api &gt; v2 &gt; tickets &gt; {ticket_id} &gt; PUT Update Ticket を探してクリックします。</p>
+<p class="image-container"><img style="width: 601.70px" src="img/62e1d4f163d04f3.png"></p>
+<p>ticket_id を設定します。ハンズオン用のアカウントを使う人は、運営から連携されたスプレッドシートに書いてある内容を入れてください。<img style="width: 601.70px" src="img/185415d93ee13aeb.png"></p>
+<p>Body タブへ移動します。Response エリアを最小化しておくと見やすいです。</p>
+<p class="image-container"><img style="width: 601.70px" src="img/16582550eeca34f1.png"></p>
+<p>先ほどの検索は GET メソッドだったので query タブにてクエリストリングを用いてリクエストを表現しましたが、今回は PUT メソッドなので Body タブでリクエストを表現します。様々な入力項目がありますが、ここでは以下のように書き換えます。 (あなたの名前) の部分は書き換えてください。他に好きな Body にしてもかまいません。</p>
+<p>```</p>
+<p>{</p>
+<p>    &#34;ticket&#34;: {</p>
+<p>        &#34;comment&#34;: {</p>
+<p>            &#34;body&#34;: &#34;(あなたの名前) の社内メモです&#34;,</p>
+<p>            &#34;public&#34;: false</p>
+<p>        }</p>
+<p>    }</p>
+<p>}</p>
+<p>```</p>
+<p class="image-container"><img style="width: 601.70px" src="img/b0496aaa0d3134fc.png"></p>
+<p>Send をクリックして社内メモを記録します。画面の下側に結果が返ってくるのが分かります。先ほど Response エリアを最小化した人は広げてください。<img style="width: 601.70px" src="img/ec85c5cbc0259210.png"></p>
+<p>plain_body に送信した内容が記録されているのが分かります。</p>
+<p class="image-container"><img style="width: 601.70px" src="img/5e1bc989f4544559.png"></p>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>
