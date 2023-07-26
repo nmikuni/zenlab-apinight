@@ -31,24 +31,18 @@
         <p>当ハンズオンでは、Zendesk の API を &#34;Postman&#34; というツールを使って実際に呼び出します。どのように API を呼び出せるのか体験することで、今後、ご自身のプログラムやサービスからも API を呼び出すことが容易になります。</p>
 <h2 is-upgraded>ハンズオンの流れ</h2>
 <p>大きく以下のような流れになっています。</p>
-<ol type="1" start="1">
-<li>Postman をセットアップ</li>
-</ol>
+<h3 is-upgraded>(1) Postman をセットアップ</h3>
 <ol type="1" start="1">
 <li>Postman にサインアップ</li>
 <li>ハンズオン用に Postman を設定</li>
 </ol>
-<ol type="1" start="2">
-<li>Zendesk API の呼び出しを実践</li>
-</ol>
+<h3 is-upgraded>(2) Zendesk API の呼び出しを実践</h3>
 <ol type="1" start="1">
 <li>チケットの情報を取り出す</li>
 <li>チケットを検索する</li>
 <li>チケットに社内メモを付ける</li>
 </ol>
-<ol type="1" start="3">
-<li>後片付け</li>
-</ol>
+<h3 is-upgraded>(3) 後片付け</h3>
 <h2 is-upgraded>注意点</h2>
 <p>ハンズオンの参加にあたって、以下に注意してください。</p>
 <ol type="1" start="1">
@@ -98,11 +92,11 @@
     
       <google-codelab-step label="Postman のエンドポイントをセットアップ" duration="0">
         <h2 is-upgraded>(参考) やっていることの説明</h2>
-<p>API を呼び出す URL を指定します。Zendesk の URL は xxxx.zendesk.com (xxxx は会社毎に異なる) という形式です。この xxxx をサブドメインとも呼びます。</p>
+<p>API を呼び出す URL を指定します。Zendesk の URL は <code>xxxx.zendesk.com</code> (xxxx は会社毎に異なる) という形式です。この xxxx をサブドメインとも呼びます。</p>
 <h2 is-upgraded>手順</h2>
 <p>Variables (変数) タブを開きます。</p>
 <p class="image-container"><img style="width: 601.70px" src="img/a35819e0267d2cfc.png"></p>
-<p>subdomain の Current value を書き換えます。ハンズオン用のアカウントを使う人は、運営から連携されたスプレッドシートに書いてある内容を入れてください。<img style="width: 601.70px" src="img/5a4b2ec03cfc5a7d.png"></p>
+<p><code>subdomain</code> の <code>Current value</code> を書き換えます。ハンズオン用のアカウントを使う人は、運営から連携されたスプレッドシートに書いてある内容を入れてください。<img style="width: 601.70px" src="img/5a4b2ec03cfc5a7d.png"></p>
 <p>Save をクリックして保存します。</p>
 <p class="image-container"><img style="width: 601.70px" src="img/e1c7a1fe4e9ccae3.png"></p>
 
@@ -117,25 +111,25 @@
 <li><a href="https://developer.zendesk.com/api-reference/introduction/security-and-auth/" target="_blank">https://developer.zendesk.com/api-reference/introduction/security-and-auth/</a></li>
 </ul>
 <h2 is-upgraded>手順</h2>
-<p>Variables (変数) タブの Add new variable のテキストボックスに apiToken と入力します。</p>
+<p>Variables (変数) タブの <code>Add new variable</code> のテキストボックスに <code>apiToken</code> と入力します。</p>
 <p class="image-container"><img style="width: 601.70px" src="img/dfd4c753194311a8.png"></p>
-<p>Initial value に example、Current Value に API トークンを入力します。ハンズオン用のアカウントを使う人は、運営から連携されたスプレッドシートに書いてある内容を入れてください。</p>
+<p>Initial value に <code>example</code>、Current Value に API トークンを入力します。ハンズオン用のアカウントを使う人は、運営から連携されたスプレッドシートに書いてある内容を入れてください。</p>
 <p class="image-container"><img style="width: 601.70px" src="img/10b7b3751f9a28ff.png"></p>
 <p>Save をクリックして保存します。</p>
 <p class="image-container"><img style="width: 601.70px" src="img/5d510fe4f9a8ecb6.png"></p>
 <p>次に、Authorization (認証) タブを開きます。</p>
 <p class="image-container"><img style="width: 601.70px" src="img/b237532a0c68cd5.png"></p>
-<p>Type を Basic Auth に設定します。</p>
+<p><code>Type</code> を <code>Basic Auth</code> に設定します。</p>
 <p class="image-container"><img style="width: 601.70px" src="img/405b2f041c6ecd69.png"></p>
 <p>Username を設定します。ハンズオン用のアカウントを使う人は、運営から連携されたスプレッドシートに書いてある内容を入れてください。</p>
 <p class="image-container"><img style="width: 601.70px" src="img/5ef78c35396b81c8.png"></p>
-<p>Password には &#123;&#123;apiToken}} と入力します。</p>
+<p>Password には <code>&#123;&#123;apiToken}}</code> と入力します。</p>
 <p class="image-container"><img style="width: 601.70px" src="img/ac6bb4c38e5157fe.png"></p>
 <p>Save をクリックして保存します。</p>
 <p class="image-container"><img style="width: 601.70px" src="img/cb199f27d59ef737.png"></p>
 <h2 is-upgraded>注意点</h2>
 <ul>
-<li>Username の形式は example@example.com/token と、後ろに /token が付いています。これは Zendesk の API 認証でトークンを用いたい場合のお作法です。</li>
+<li>Username の形式は <code>example@example.com/token</code> と、後ろに <code>/token</code> が付いています。これは Zendesk の API 認証でトークンを用いたい場合のお作法です。</li>
 <li>Authorization の Password に直接 API トークンを入力しても良いのですが、Postman の推奨に従って Variabiles を設定しています。</li>
 <li>今回はハンズオンのため複数人で同じ API トークンを使っていますが、実際の運用においてはアプリケーション毎にトークンを分けることを推奨します。</li>
 </ul>
@@ -162,7 +156,7 @@
 <h2 is-upgraded>手順</h2>
 <p>左側のフォルダ階層から、Support API &gt; api &gt; v2 &gt; tickets &gt; GET List Tickets を探してクリックします。</p>
 <p class="image-container"><img style="width: 601.70px" src="img/e19f79f45ca5a21e.png"></p>
-<p>external_id のチェックボックスを外して Send をクリックします。<img style="width: 601.70px" src="img/374d07a226d2e799.png"></p>
+<p><code>external_id</code> のチェックボックスを外して <code>Send</code> をクリックします。<img style="width: 601.70px" src="img/374d07a226d2e799.png"></p>
 <p>画面の下側に結果が返ってくるのが分かります。</p>
 <p class="image-container"><img style="width: 601.70px" src="img/95ef14187c379c6a.png"></p>
 <p>API の実行結果は JSON という形式で返却されます。</p>
@@ -178,10 +172,10 @@
 <p class="image-container"><img style="width: 601.70px" src="img/b52571b35fec097d.png"></p>
 <p>JSON Editor Online へ貼り付けます。</p>
 <p class="image-container"><img style="width: 601.70px" src="img/61228f43c32830ad.png"></p>
-<p>tree を選択することで見やすくなります。</p>
+<p><code>tree</code> を選択することで見やすくなります。</p>
 <p class="image-container"><img style="width: 601.70px" src="img/f65c048d4766003.png"></p>
-<p>たとえば上の例では tickets : [ 2 items という表示から、2件のチケットがあることが分かります。その下の 0 や 1 はリストの要素の番号です (プログラミングの世界では 0 から数え始めることが多いです)。</p>
-<p>1 の要素の中を見ていきます。よく使う項目としては、以下のようなものがあります。</p>
+<p>たとえば上の例では <code>tickets : [ 2 items</code> という表示から、2件のチケットがあることが分かります。その下の <code>0</code> や <code>1</code> はリストの要素の番号です (プログラミングの世界では 0 から数え始めることが多いです)。</p>
+<p><code>1</code> の要素の中を見ていきます。よく使う項目としては、以下のようなものがあります。</p>
 <table>
 <tr><td colspan="1" rowspan="1"><p>項目</p>
 </td><td colspan="1" rowspan="1"><p>説明</p>
@@ -220,8 +214,8 @@
 <h2 is-upgraded>手順</h2>
 <p>左側のフォルダ階層から、Support API &gt; api &gt; v2 &gt; search &gt; GET List Search Results を探してクリックします。</p>
 <p class="image-container"><img style="width: 601.70px" src="img/83669d937e5934d8.png"></p>
-<p>sort_by と sort_order のチェックボックスを外します。<img style="width: 601.70px" src="img/491f72130ec8757a.png"></p>
-<p>query の Value を以下のように入力し、Send をクリックします。これは、「解決済み」チケットを検索しています。</p>
+<p><code>sort_by</code> と <code>sort_order</code> のチェックボックスを外します。<img style="width: 601.70px" src="img/491f72130ec8757a.png"></p>
+<p><code>query</code> の <code>Value</code> を以下のように入力し、<code>Send</code> をクリックします。これは、「解決済み」チケットを検索しています。</p>
 <ul>
 <li>type:ticket status:solved</li>
 </ul>
@@ -233,8 +227,8 @@
 <p>画面の下側に結果が返ってくるのが分かります。</p>
 <p class="image-container"><img style="width: 601.70px" src="img/6b6155f95182725b.png"></p>
 <h2 is-upgraded>(参考) クエリストリングについて</h2>
-<p>API ではこのように、エンドポイントの末尾に ?xxx=yyy のような文字列が付くことがよくあります。これをクエリストリング (query string) と呼びます。REST API の</p>
-<p> GET メソッドではクエリストリングで GET するときの条件を設定します。複数のクエリストリングもつけられます。たとえば今回はチェックボックスを外しましたが sort_by ではソート条件を設定できます。</p>
+<p>API ではこのように、エンドポイントの末尾に <code>?xxx=yyy</code> のような文字列が付くことがよくあります。これをクエリストリング (query string) と呼びます。REST API の</p>
+<p> GET メソッドではクエリストリングで GET するときの条件を設定します。複数のクエリストリングもつけられます。たとえば今回はチェックボックスを外しましたが <code>sort_by</code> ではソート条件を設定できます。</p>
 
 
       </google-codelab-step>
@@ -245,24 +239,23 @@
 <h2 is-upgraded>手順</h2>
 <p>左側のフォルダ階層から、Support API &gt; api &gt; v2 &gt; tickets &gt; {ticket_id} &gt; PUT Update Ticket を探してクリックします。</p>
 <p class="image-container"><img style="width: 601.70px" src="img/62e1d4f163d04f3.png"></p>
-<p>ticket_id を設定します。ハンズオン用のアカウントを使う人は、運営から連携されたスプレッドシートに書いてある内容を入れてください。<img style="width: 601.70px" src="img/185415d93ee13aeb.png"></p>
-<p>Body タブへ移動します。Response エリアを最小化しておくと見やすいです。</p>
+<p><code>ticket_id</code> を設定します。ハンズオン用のアカウントを使う人は、運営から連携されたスプレッドシートに書いてある内容を入れてください。<img style="width: 601.70px" src="img/185415d93ee13aeb.png"></p>
+<p><code>Body</code> タブへ移動します。Response エリアを最小化しておくと見やすいです。</p>
 <p class="image-container"><img style="width: 601.70px" src="img/16582550eeca34f1.png"></p>
-<p>先ほどの検索は GET メソッドだったので query タブにてクエリストリングを用いてリクエストを表現しましたが、今回は PUT メソッドなので Body タブでリクエストを表現します。様々な入力項目がありますが、ここでは以下のように書き換えます。 (あなたの名前) の部分は書き換えてください。他に好きな Body にしてもかまいません。</p>
-<p>```</p>
-<p>{</p>
-<p>    &#34;ticket&#34;: {</p>
-<p>        &#34;comment&#34;: {</p>
-<p>            &#34;body&#34;: &#34;(あなたの名前) の社内メモです&#34;,</p>
-<p>            &#34;public&#34;: false</p>
-<p>        }</p>
-<p>    }</p>
-<p>}</p>
-<p>```</p>
+<p>先ほどの検索は GET メソッドだったので query タブにてクエリストリングを用いてリクエストを表現しましたが、今回は PUT メソッドなので Body タブでリクエストを表現します。様々な入力項目がありますが、ここでは以下のように書き換えます。 &#34;<strong>(あなたの名前)</strong>&#34; の部分は書き換えてください。他に好きな Body にしてもかまいません。</p>
+<pre><code>{
+    &#34;ticket&#34;: {
+        &#34;comment&#34;: {
+            &#34;body&#34;: &#34;(あなたの名前) の社内メモです&#34;,
+            &#34;public&#34;: false
+        }
+    }
+}</code></pre>
 <p class="image-container"><img style="width: 601.70px" src="img/b0496aaa0d3134fc.png"></p>
-<p>Send をクリックして社内メモを記録します。画面の下側に結果が返ってくるのが分かります。先ほど Response エリアを最小化した人は広げてください。<img style="width: 601.70px" src="img/ec85c5cbc0259210.png"></p>
-<p>plain_body に送信した内容が記録されているのが分かります。</p>
+<p><code>Send</code> をクリックして社内メモを記録します。画面の下側に結果が返ってくるのが分かります。先ほど Response エリアを最小化した人は広げてください。<img style="width: 601.70px" src="img/ec85c5cbc0259210.png"></p>
+<p><code>plain_body</code> に送信した内容が記録されているのが分かります。</p>
 <p class="image-container"><img style="width: 601.70px" src="img/5e1bc989f4544559.png"></p>
+<p>なお、チケットのコメント一覧を参照したい場合は Support API &gt; api &gt; v2 &gt; tickets &gt; {ticket_id} &gt; comments &gt; List Comments API を使います。使い方を考えるところから、ぜひチャレンジしてみてください。</p>
 
 
       </google-codelab-step>
@@ -288,12 +281,12 @@
 <h2 is-upgraded>サンプルコードを表示する</h2>
 <ol type="1" start="1">
 <li>呼び出したい API へ移動します(たとえば チケット一覧を表示する API なら、左側のフォルダ階層から、Support API &gt; api &gt; v2 &gt; tickets &gt; GET List Tickets を探してクリック) </li>
-<li>右側の &lt;/&gt; (Code) をクリックします。</li>
+<li>右側の <code></></code> (Code) をクリックします。</li>
 </ol>
 <p class="image-container"><img style="width: 601.70px" src="img/e0ebf91e8040072a.png"></p>
 <p>以下のように、サンプルコードが表示されます。</p>
 <p class="image-container"><img style="width: 601.70px" src="img/1ca64b3744413d52.png"></p>
-<p>もし Cookie といった文字列がある場合、Zendesk API では Cookie は不要なので削除します。Cookies をクリックして、Clear All Cookies をクリックします。</p>
+<p>もし <code>Cookie</code> といった文字列がある場合、Zendesk API では Cookie は不要なので削除します。<code>Cookies</code> をクリックして、<code>Clear All Cookies</code> をクリックします。</p>
 <p class="image-container"><img style="width: 601.70px" src="img/880713697df99469.png"></p>
 <h2 is-upgraded>サンプルコードをコピーする</h2>
 <h3 is-upgraded>注意 1</h3>
@@ -301,7 +294,7 @@
 <h3 is-upgraded>注意 2</h3>
 <p>サンプルコードには、Zendesk の認証情報が含まれます。特に GAS や AWS など外部の環境でプログラムを実行したり、コードを GitHub へ保存するような際は、認証情報の漏洩リスクに十分注意してください。安全な保管方法は、周りのエンジニアなどへ相談することをお勧めします。</p>
 <h3 is-upgraded>手順</h3>
-<p>画像の cURL の部分を選択すると、プログラミング言語を選択できます。cURL を選択して、コピーします。</p>
+<p>画像の <code>cURL</code> の部分を選択すると、プログラミング言語を選択できます。<code>cURL</code> を選択して、コピーします。</p>
 <p class="image-container"><img style="width: 601.70px" src="img/50ffbbbc9cb8cef8.png"></p>
 <p>Mac の人、および Windows Subsystem for Linux (WSL) の人はターミナルへ貼り付けて実行します。</p>
 <p>Windows (10 以降) でコマンドプロンプトを使っている人は、大変ですが、以下のように書き換えます。なお、Windows 10 の特定バージョンより古く、コマンドプロンプトで cURL を実行できない場合、このセクションは実施できないのでご了承下さい。</p>
@@ -309,13 +302,13 @@
 <li>メモ帳へ貼り付けます</li>
 <li>行末の \ を削除して、改行をなくし、1 行にします</li>
 <li>シングルクォート (&#39;) をダブルクォート (&#34;) へ書き換えます</li>
-<li>コピーします (例: curl &#34;https://example.zendesk.com/api/v2/tickets&#34; --header &#34;Accept: application/json&#34; --header &#34;Authorization: Basic xxxxxxxx )</li>
+<li>コピーします (例: <code>curl "https://example.zendesk.com/api/v2/tickets" --header "Accept: application/json" --header "Authorization: Basic xxxxxxxx</code> )</li>
 <li>コマンドプロンプトへ貼り付けて実行します。</li>
 </ol>
 <p class="image-container"><img style="width: 601.70px" src="img/479f3841fbea10b1.png"></p>
 <p>同様に、他の言語でも利用できます。冒頭の「注意」にも書いた通り、認証情報の取り扱いには十分注意してください。</p>
 <h3 is-upgraded>GAS で利用したい場合の注意点</h3>
-<p>GAS で Zendesk API を呼び出したい場合、GAS の UrlFetchApp.fetch メソッドを使うことになります (詳細の説明は割愛します)。ハンズオン開催日時点では、Postman から UrlFetchApp.fetch メソッド形式のサンプルコードは作成できません。最近では Chat GPT が非常に優れているので、cURL のサンプルコードをコピーし、認証情報をマスクしたうえで変換してもらうことが考えられます。</p>
+<p>GAS で Zendesk API を呼び出したい場合、GAS の <code>UrlFetchApp.fetch</code> メソッドを使うことになります (詳細の説明は割愛します)。ハンズオン開催日時点では、Postman から <code>UrlFetchApp.fetch</code> メソッド形式のサンプルコードは作成できません。最近では Chat GPT が非常に優れているので、cURL のサンプルコードをコピーし、認証情報をマスクしたうえで変換してもらうことが考えられます。</p>
 <p class="image-container"><img style="width: 601.70px" src="img/cd1ce60f423aba48.png"></p>
 
 
@@ -339,7 +332,7 @@
 <li>デベロッパーツールを起動します (Google Chrome + Windows の場合、Ctrl + Shift + i で起動)</li>
 <li>ネットワークタブを開きます</li>
 <li>管理画面で特定の操作 (たとえば以下ではチケットの表示) をします</li>
-<li>api/v2 などでフィルタすると探しやすいです</li>
+<li><code>api/v2</code> などでフィルタすると探しやすいです</li>
 <li>表示された行の中から、それらしい API 呼び出しを探します。たとえば例では ID が 2 であるチケットを表示しているので、2 を探しました。ブラウザの URL のパスも、 API のパスに呼応していることもあるのでヒントになります</li>
 <li>ヘッダータブで、呼び出し方法を確認します</li>
 <li>レスポンスタブでは、呼び出し結果が表示されています</li>
@@ -358,7 +351,7 @@
 <p>すべて英語ですが、使い方や注意点もまとまっているので、特にプログラムから呼び出す前には一度目を通しておくことをお勧めします。</p>
 <p class="image-container"><img style="width: 601.70px" src="img/5715b0a68ee4872b.png"></p>
 <h3 is-upgraded>Postman から探す</h3>
-<p>API リファレンスでは API の実行例・結果例の表示はありますが、実環境への実行はできません。また API の検索はしづらいかもしれません。Postman にはフィルタ機能がありますので、検索・実行が一度にできて便利です。↓の画像では comments に関係している API をフィルタしています。慣れると、API 名を類推してフィルタできるようになります。</p>
+<p>API リファレンスでは API の実行例・結果例の表示はありますが、実環境への実行はできません。また API の検索はしづらいかもしれません。Postman にはフィルタ機能がありますので、検索・実行が一度にできて便利です。↓の画像では <code>comments</code> に関係している API をフィルタしています。慣れると、API 名を類推してフィルタできるようになります。</p>
 <p class="image-container"><img style="width: 601.70px" src="img/9a302f5bddbc5aca.png"></p>
 
 
