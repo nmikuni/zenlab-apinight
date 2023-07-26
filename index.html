@@ -56,6 +56,7 @@
 <li>テキストは Google Docs および Google Spreadsheet で共有します。そのため PC は Google Workspaces のサービスへアクセスできる必要があります</li>
 <li>ブラウザのアドオンや PC のセキュリティ設定によっては Postman へのアクセスや Postman からの API の実行をブロックされる場合があります</li>
 <li>当ハンズオンでは Zenlab 用に作成した <a href="https://developer.zendesk.com/documentation/api-basics/getting-started/getting-a-trial-or-sponsored-account-for-development/" target="_blank">Zendesk の Sponsored account</a> (Zendesk から無償で使わせていただいている開発用のテストアカウント) を参加者に利用していただく想定です。自身、または自社の Zendesk アカウントを使用する場合は Postman の設定が少し異なりますので、適宜読み替えてください。</li>
+<li>このハンズオン資料は 2023 年 7 月時点の情報をもとにしています。最新の情報は各種公式ドキュメントを参照してください。</li>
 </ol>
 <h2 is-upgraded>(参考) Postman とは</h2>
 <p>Postmanは、主にウェブサービスを開発するときに役立つツールです。ウェブサービスが正しく動作しているかをテストするために、特定の API リクエストを送信し、その結果を見ることができます。今回は Zendesk の API を体験するために用いますが、ウェブサイトからデータを取得するリクエストを送信し、データが期待通りに返ってきているかを確認するような使い方もできます。</p>
@@ -66,7 +67,7 @@
       </google-codelab-step>
     
       <google-codelab-step label="Postman をセットアップ" duration="0">
-        <h3 is-upgraded>Postman へサインアップ</h3>
+        <h2 is-upgraded>Postman へサインアップ</h2>
 <p>以下のページへアクセスして、Postman へサインアップしてください。メールアドレス・ユーザー名・パスワードでアカウントを作るか、Google アカウントでサインアップします。</p>
 <ul>
 <li><a href="https://identity.getpostman.com/signup" target="_blank">https://identity.getpostman.com/signup</a></li>
@@ -74,11 +75,11 @@
 <p class="image-container"><img style="width: 601.70px" src="img/a320d8af57be191b.png"></p>
 <p>サインアップが完了すると以下のような Welcome メッセージが表示されます。ポップアップは閉じて次のステップへ進みます。</p>
 <p class="image-container"><img style="width: 601.70px" src="img/1397555275b6fcec.png"></p>
-<h3 is-upgraded>Zendesk API のリストを自分の環境へコピーする</h3>
-<h4 is-upgraded>(参考) やっていることの説明</h4>
+<h2 is-upgraded>Zendesk API のリストを自分の環境へコピーする</h2>
+<h3 is-upgraded>(参考) やっていることの説明</h3>
 <p>API を呼び出すには URL のパスやメソッド、認証情報といった設定が必要です。Zendesk は、Zendesk の API を Postman で簡単に呼び出せるよう Zendesk の各種 API のリストを Postman の Collection として公開しています。</p>
 <p>公開されている中の「Zendesk Support」の Collection を fork する (API のリストを自分の環境へコピーする) ことで、準備の大部分を省略します。なお、Collection は Postman の用語ですが、fork は GitHub などでも用いる用語です。</p>
-<h4 is-upgraded>手順</h4>
+<h3 is-upgraded>手順</h3>
 <p>以下の URL へアクセスします。</p>
 <ul>
 <li><a href="https://www.postman.com/zendesk-redback/workspace/cfe0e8e6-42d1-4f46-a048-90e2caae5a05/collection/19931619-491840ed-8cea-4d36-9e4e-3cc4fc97be68" target="_blank">https://www.postman.com/zendesk-redback/workspace/cfe0e8e6-42d1-4f46-a048-90e2caae5a05/collection/19931619-491840ed-8cea-4d36-9e4e-3cc4fc97be68</a></li>
@@ -96,9 +97,9 @@
       </google-codelab-step>
     
       <google-codelab-step label="Postman のエンドポイントをセットアップ" duration="0">
-        <h4 is-upgraded>(参考) やっていることの説明</h4>
+        <h2 is-upgraded>(参考) やっていることの説明</h2>
 <p>API を呼び出す URL を指定します。Zendesk の URL は xxxx.zendesk.com (xxxx は会社毎に異なる) という形式です。この xxxx をサブドメインとも呼びます。</p>
-<h4 is-upgraded>手順</h4>
+<h2 is-upgraded>手順</h2>
 <p>Variables (変数) タブを開きます。</p>
 <p class="image-container"><img style="width: 601.70px" src="img/a35819e0267d2cfc.png"></p>
 <p>subdomain の Current value を書き換えます。ハンズオン用のアカウントを使う人は、運営から連携されたスプレッドシートに書いてある内容を入れてください。<img style="width: 601.70px" src="img/5a4b2ec03cfc5a7d.png"></p>
@@ -109,13 +110,13 @@
       </google-codelab-step>
     
       <google-codelab-step label="Postman の認証情報をセットアップ" duration="0">
-        <h4 is-upgraded>(参考) やっていることの説明</h4>
+        <h2 is-upgraded>(参考) やっていることの説明</h2>
 <p>API を呼び出すときの認証情報を設定します。Zendesk API の認証方法はいろいろあるのですが、今回のハンズオンでは「E メールアドレス」と「API トークン」を利用した Basic 認証を利用します。今回は解説しませんが、他の認証方式も合わせて学びたい場合は、以下のドキュメントを参照してください。</p>
 <ul>
 <li><a href="https://support.zendesk.com/hc/ja/articles/4408831452954" target="_blank">https://support.zendesk.com/hc/ja/articles/4408831452954</a></li>
 <li><a href="https://developer.zendesk.com/api-reference/introduction/security-and-auth/" target="_blank">https://developer.zendesk.com/api-reference/introduction/security-and-auth/</a></li>
 </ul>
-<h4 is-upgraded>手順</h4>
+<h2 is-upgraded>手順</h2>
 <p>Variables (変数) タブの Add new variable のテキストボックスに apiToken と入力します。</p>
 <p class="image-container"><img style="width: 601.70px" src="img/dfd4c753194311a8.png"></p>
 <p>Initial value に example、Current Value に API トークンを入力します。ハンズオン用のアカウントを使う人は、運営から連携されたスプレッドシートに書いてある内容を入れてください。</p>
@@ -132,13 +133,13 @@
 <p class="image-container"><img style="width: 601.70px" src="img/ac6bb4c38e5157fe.png"></p>
 <p>Save をクリックして保存します。</p>
 <p class="image-container"><img style="width: 601.70px" src="img/cb199f27d59ef737.png"></p>
-<h4 is-upgraded>注意点</h4>
+<h2 is-upgraded>注意点</h2>
 <ul>
 <li>Username の形式は example@example.com/token と、後ろに /token が付いています。これは Zendesk の API 認証でトークンを用いたい場合のお作法です。</li>
 <li>Authorization の Password に直接 API トークンを入力しても良いのですが、Postman の推奨に従って Variabiles を設定しています。</li>
 <li>今回はハンズオンのため複数人で同じ API トークンを使っていますが、実際の運用においてはアプリケーション毎にトークンを分けることを推奨します。</li>
 </ul>
-<h4 is-upgraded>(参考) 自社の Zendesk で API トークンを発行したい場合</h4>
+<h2 is-upgraded>(参考) 自社の Zendesk で API トークンを発行したい場合</h2>
 <p>今回はハンズオン用に E メールアドレスと API トークンを払い出しますが、今後自社で API トークンを用いた認証をしたい場合は、以下のドキュメントを参照してください。</p>
 <ul>
 <li><a href="https://support.zendesk.com/hc/ja/articles/4408889192858" target="_blank">https://support.zendesk.com/hc/ja/articles/4408889192858</a></li>
@@ -158,14 +159,14 @@
     
       <google-codelab-step label="チケットの情報を取り出す" duration="0">
         <p>まずはチケットの一覧を取得してみましょう。</p>
-<h4 is-upgraded>手順</h4>
+<h2 is-upgraded>手順</h2>
 <p>左側のフォルダ階層から、Support API &gt; api &gt; v2 &gt; tickets &gt; GET List Tickets を探してクリックします。</p>
 <p class="image-container"><img style="width: 601.70px" src="img/e19f79f45ca5a21e.png"></p>
 <p>external_id のチェックボックスを外して Send をクリックします。<img style="width: 601.70px" src="img/374d07a226d2e799.png"></p>
 <p>画面の下側に結果が返ってくるのが分かります。</p>
 <p class="image-container"><img style="width: 601.70px" src="img/95ef14187c379c6a.png"></p>
 <p>API の実行結果は JSON という形式で返却されます。</p>
-<h4 is-upgraded>(応用) 返却された JSON を読み解く</h4>
+<h2 is-upgraded>(応用) 返却された JSON を読み解く</h2>
 <p>JSON はアプリケーションにとっては読みやすい形式ですが、人間にとっては読みにくい場合もあります。実際の運用にあたってはアプリケーションから API を呼び出し、アプリケーションのなかで JSON から必要な情報を読み取ればと思いますが、ここではオンラインのツールの「JSON Editor Online」を使って JSON を読んでみます。なお、オンラインの JSON 読み込みツールを使うときは、セキュリティポリシーを十分に確認してください。今回は、入力したデータが運営元や第三者が見られないツールを選定しました。</p>
 <p>以下の URL を開きます。</p>
 <ul>
@@ -216,7 +217,7 @@
         <p>前回はチケットの一覧を表示しましたが、次はチケットを検索してみます。たとえば現在「オープン」状態のチケット一覧を取得して、必要な情報を整形して Slack 等へ通知する、などは良く作成するアプリケーションの例です。</p>
 <p>Zendesk Support のコンソール画面で言うと、赤枠で囲った検索窓を使っているようなイメージです。</p>
 <p class="image-container"><img style="width: 601.70px" src="img/e0b3080a27711316.png"></p>
-<h4 is-upgraded>手順</h4>
+<h2 is-upgraded>手順</h2>
 <p>左側のフォルダ階層から、Support API &gt; api &gt; v2 &gt; search &gt; GET List Search Results を探してクリックします。</p>
 <p class="image-container"><img style="width: 601.70px" src="img/83669d937e5934d8.png"></p>
 <p>sort_by と sort_order のチェックボックスを外します。<img style="width: 601.70px" src="img/491f72130ec8757a.png"></p>
@@ -231,7 +232,7 @@
 </ul>
 <p>画面の下側に結果が返ってくるのが分かります。</p>
 <p class="image-container"><img style="width: 601.70px" src="img/6b6155f95182725b.png"></p>
-<h4 is-upgraded>(参考) クエリストリングについて</h4>
+<h2 is-upgraded>(参考) クエリストリングについて</h2>
 <p>API ではこのように、エンドポイントの末尾に ?xxx=yyy のような文字列が付くことがよくあります。これをクエリストリング (query string) と呼びます。REST API の</p>
 <p> GET メソッドではクエリストリングで GET するときの条件を設定します。複数のクエリストリングもつけられます。たとえば今回はチェックボックスを外しましたが sort_by ではソート条件を設定できます。</p>
 
@@ -241,7 +242,7 @@
       <google-codelab-step label="チケットに社内メモを付ける" duration="0">
         <p>Zendesk Support のコンソール画面で言うと、赤枠で囲ったように社内メモを保存しているようなイメージです。</p>
 <p class="image-container"><img style="width: 601.70px" src="img/110e71046c077b6a.png"></p>
-<h4 is-upgraded>手順</h4>
+<h2 is-upgraded>手順</h2>
 <p>左側のフォルダ階層から、Support API &gt; api &gt; v2 &gt; tickets &gt; {ticket_id} &gt; PUT Update Ticket を探してクリックします。</p>
 <p class="image-container"><img style="width: 601.70px" src="img/62e1d4f163d04f3.png"></p>
 <p>ticket_id を設定します。ハンズオン用のアカウントを使う人は、運営から連携されたスプレッドシートに書いてある内容を入れてください。<img style="width: 601.70px" src="img/185415d93ee13aeb.png"></p>
@@ -262,6 +263,103 @@
 <p>Send をクリックして社内メモを記録します。画面の下側に結果が返ってくるのが分かります。先ほど Response エリアを最小化した人は広げてください。<img style="width: 601.70px" src="img/ec85c5cbc0259210.png"></p>
 <p>plain_body に送信した内容が記録されているのが分かります。</p>
 <p class="image-container"><img style="width: 601.70px" src="img/5e1bc989f4544559.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="あとかたづけと次のステップ" duration="0">
+        <p>当ハンズオンでは、Zendesk の API を &#34;Postman&#34; というツールを使って実際に呼び出しました。どのように API を呼び出せるのか体験することで、今後、ご自身のプログラムやサービスからも API を呼び出すことが容易になるかと思います。</p>
+<h2 is-upgraded>あとかたづけ</h2>
+<p>当ハンズオンでは、API の認証情報を運営から発行しているので、参加者のあとかたづけは不要です。Postman も無料プランであれば、料金はかかりません。</p>
+<p>運営から発行している API の認証情報は一定期間が経過した後に使えなくなる可能性があるのでご了承ください。</p>
+<p>また、API の認証情報を自身で発行した場合は、自社のセキュリティポリシーに従って削除などを検討してください。以下のドキュメントの、API トークンを作成した画面から削除できます。</p>
+<ul>
+<li><a href="https://support.zendesk.com/hc/ja/articles/4408889192858" target="_blank">https://support.zendesk.com/hc/ja/articles/4408889192858</a></li>
+</ul>
+<h2 is-upgraded>次のステップ</h2>
+<p>次のステップとしては、引き続き他の API を試したり、自社のプログラムから呼び出したりすることが考えられます。お使いのプログラミング言語や、使いたい API は様々だと思いますので、次ページ以降のセクションに Tips を載せておきました。</p>
+<p>これらを参考に、Zendesk をさらに活用していきましょう。</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="参考: アプリケーション (コード) からの使い方" duration="0">
+        <p>今回は Postman を使って API の呼び出しを体験しましたが、実際の現場では Node.JS や Python などのアプリケーションから呼び出すことが多いと思います。アプリケーションの実行環境としてよく使うのは、ローカル PC や Google Apps Script (GAS)、AWS Lambda などです。</p>
+<h2 is-upgraded>サンプルコードを表示する</h2>
+<ol type="1" start="1">
+<li>呼び出したい API へ移動します(たとえば チケット一覧を表示する API なら、左側のフォルダ階層から、Support API &gt; api &gt; v2 &gt; tickets &gt; GET List Tickets を探してクリック) </li>
+<li>右側の &lt;/&gt; (Code) をクリックします。</li>
+</ol>
+<p class="image-container"><img style="width: 601.70px" src="img/e0ebf91e8040072a.png"></p>
+<p>以下のように、サンプルコードが表示されます。</p>
+<p class="image-container"><img style="width: 601.70px" src="img/1ca64b3744413d52.png"></p>
+<p>もし Cookie といった文字列がある場合、Zendesk API では Cookie は不要なので削除します。Cookies をクリックして、Clear All Cookies をクリックします。</p>
+<p class="image-container"><img style="width: 601.70px" src="img/880713697df99469.png"></p>
+<h2 is-upgraded>サンプルコードをコピーする</h2>
+<h3 is-upgraded>注意 1</h3>
+<p>このセクションは、お使いの環境によってはできない可能性があります</p>
+<h3 is-upgraded>注意 2</h3>
+<p>サンプルコードには、Zendesk の認証情報が含まれます。特に GAS や AWS など外部の環境でプログラムを実行したり、コードを GitHub へ保存するような際は、認証情報の漏洩リスクに十分注意してください。安全な保管方法は、周りのエンジニアなどへ相談することをお勧めします。</p>
+<h3 is-upgraded>手順</h3>
+<p>画像の cURL の部分を選択すると、プログラミング言語を選択できます。cURL を選択して、コピーします。</p>
+<p class="image-container"><img style="width: 601.70px" src="img/50ffbbbc9cb8cef8.png"></p>
+<p>Mac の人、および Windows Subsystem for Linux (WSL) の人はターミナルへ貼り付けて実行します。</p>
+<p>Windows (10 以降) でコマンドプロンプトを使っている人は、大変ですが、以下のように書き換えます。なお、Windows 10 の特定バージョンより古く、コマンドプロンプトで cURL を実行できない場合、このセクションは実施できないのでご了承下さい。</p>
+<ol type="1" start="1">
+<li>メモ帳へ貼り付けます</li>
+<li>行末の \ を削除して、改行をなくし、1 行にします</li>
+<li>シングルクォート (&#39;) をダブルクォート (&#34;) へ書き換えます</li>
+<li>コピーします (例: curl &#34;https://example.zendesk.com/api/v2/tickets&#34; --header &#34;Accept: application/json&#34; --header &#34;Authorization: Basic xxxxxxxx )</li>
+<li>コマンドプロンプトへ貼り付けて実行します。</li>
+</ol>
+<p class="image-container"><img style="width: 601.70px" src="img/479f3841fbea10b1.png"></p>
+<p>同様に、他の言語でも利用できます。冒頭の「注意」にも書いた通り、認証情報の取り扱いには十分注意してください。</p>
+<h3 is-upgraded>GAS で利用したい場合の注意点</h3>
+<p>GAS で Zendesk API を呼び出したい場合、GAS の UrlFetchApp.fetch メソッドを使うことになります (詳細の説明は割愛します)。ハンズオン開催日時点では、Postman から UrlFetchApp.fetch メソッド形式のサンプルコードは作成できません。最近では Chat GPT が非常に優れているので、cURL のサンプルコードをコピーし、認証情報をマスクしたうえで変換してもらうことが考えられます。</p>
+<p class="image-container"><img style="width: 601.70px" src="img/cd1ce60f423aba48.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="参考: 各言語で使うときの Tips" duration="0">
+        <p>API をプログラムからきちんと使おうとすると、今回触れなかったページネーションだったり、認証情報の使いまわしだったり、リクエスト数のリミットへの対応だったり、エラーハンドリングだったりと、考えることがたくさんあります。これらについて考慮されたサンプル実装が公開されていると、ユーザーとしてとても便利です。Zendesk ではいくつかのプログラミング言語で、API クライアントが公開されています。これらは主にコミュニティによってメンテナンスされています。詳細は以下のページを参照してください。</p>
+<ul>
+<li><a href="https://developer.zendesk.com/documentation/ticketing/api-clients/introduction/" target="_blank">https://developer.zendesk.com/documentation/ticketing/api-clients/introduction/</a></li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="参考: API の探し方" duration="0">
+        <p>API をそのまま使うにしても、公開された API クライアントを使うにしても、使いたい API をスムーズに探せるようになると、その後の実装も簡単です。</p>
+<h3 is-upgraded>Zendesk の管理画面から探す</h3>
+<p>こちらはやや邪道な方法ですが、個人的に探しやすいと思っているので紹介します。</p>
+<p>Zendesk の管理画面からも、Zendesk の API を呼んでいます。API の利用が必要となる理由の一つに、管理画面の操作を自動化したいことが挙げられます。</p>
+<ol type="1" start="1">
+<li>デベロッパーツールを起動します (Google Chrome + Windows の場合、Ctrl + Shift + i で起動)</li>
+<li>ネットワークタブを開きます</li>
+<li>管理画面で特定の操作 (たとえば以下ではチケットの表示) をします</li>
+<li>api/v2 などでフィルタすると探しやすいです</li>
+<li>表示された行の中から、それらしい API 呼び出しを探します。たとえば例では ID が 2 であるチケットを表示しているので、2 を探しました。ブラウザの URL のパスも、 API のパスに呼応していることもあるのでヒントになります</li>
+<li>ヘッダータブで、呼び出し方法を確認します</li>
+<li>レスポンスタブでは、呼び出し結果が表示されています</li>
+</ol>
+<p class="image-container"><img style="width: 601.70px" src="img/93c0821bbcbd624a.png"></p>
+<p class="image-container"><img style="width: 601.70px" src="img/e63dbd2a3bb6238f.png"></p>
+<h3 is-upgraded>API リファレンスから探す</h3>
+<p>こちらが正統な方法です。以下に Zendesk が API 一覧を公開していますのでこちらから目的の API を探します。</p>
+<ul>
+<li><a href="https://developer.zendesk.com/api-reference/" target="_blank">https://developer.zendesk.com/api-reference/</a></li>
+</ul>
+<p>たとえばチケットに関する API は以下のページにまとまっています。</p>
+<ul>
+<li><a href="https://developer.zendesk.com/api-reference/ticketing/tickets/tickets/" target="_blank">https://developer.zendesk.com/api-reference/ticketing/tickets/tickets/</a></li>
+</ul>
+<p>すべて英語ですが、使い方や注意点もまとまっているので、特にプログラムから呼び出す前には一度目を通しておくことをお勧めします。</p>
+<p class="image-container"><img style="width: 601.70px" src="img/5715b0a68ee4872b.png"></p>
+<h3 is-upgraded>Postman から探す</h3>
+<p>API リファレンスでは API の実行例・結果例の表示はありますが、実環境への実行はできません。また API の検索はしづらいかもしれません。Postman にはフィルタ機能がありますので、検索・実行が一度にできて便利です。↓の画像では comments に関係している API をフィルタしています。慣れると、API 名を類推してフィルタできるようになります。</p>
+<p class="image-container"><img style="width: 601.70px" src="img/9a302f5bddbc5aca.png"></p>
 
 
       </google-codelab-step>
